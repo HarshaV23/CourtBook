@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "1009240553958",
+    "firebase_url": "https://courtbooking-c5472.firebaseio.com",
+    "project_id": "courtbooking-c5472",
+    "storage_bucket": "courtbooking-c5472.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1009240553958:android:26189cce2045396d",
+        "android_client_info": {
+          "package_name": "com.example.courtbook"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1009240553958-o8antb0cnrnlph4njn0g09epkfp9ns1l.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.courtbook",
+            "certificate_hash": "b1f4e830ca81354b9edbde40bb398bcfd77959cc"
+          }
+        },
+        {
+          "client_id": "1009240553958-44fd3b1usriddgth3216dsk5bsn4f847.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCT4_C_ecm_W8OTudtQuqFLZ0A_WsvD3FU"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1009240553958-44fd3b1usriddgth3216dsk5bsn4f847.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
