@@ -1,5 +1,8 @@
 package com.example.courtbook;
 
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -12,39 +15,59 @@ import java.util.ArrayList;
 
 public class SportSelectAdapter extends RecyclerView.Adapter<SportSelectAdapter.SportViewHolder> {
     private ArrayList<Getsport> msportlist;
+    private Context context;
 
-    public static class SportViewHolder extends RecyclerView.ViewHolder{
-        //public ImageView imageView;
-        public RelativeLayout relativeLayout;
-        public TextView textView;
-        public SportViewHolder(@NonNull View itemView) {
-            super(itemView);
-          //  imageView=itemView.findViewById(R.id.sportImg);
-            relativeLayout=itemView.findViewById(R.id.sportRelative);
-            textView=itemView.findViewById(R.id.sportName);
-        }
-    }
-    public SportSelectAdapter(ArrayList<Getsport>sportlist){
+
+    public SportSelectAdapter(ArrayList<Getsport> sportlist, Context context){
                 msportlist=sportlist;
+                this.context = context;
     }
 
     @NonNull
     @Override
     public SportViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-        View v=LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.sportcard,viewGroup,false);
-        SportViewHolder evh=new SportViewHolder(v);
-        return evh;
+        LayoutInflater inflater = LayoutInflater.from(context);
+        View view = inflater.inflate(R.layout.sportcard, viewGroup, false);
+        return new SportSelectAdapter.SportViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull SportViewHolder sportViewHolder, int i) {
-            Getsport current=msportlist.get(i);
-            sportViewHolder.relativeLayout.setBackgroundResource(current.getSportimg());
-            sportViewHolder.textView.setText(current.getSportname());
+            Getsport sport=msportlist.get(i);
+            sportViewHolder.relativeLayout.setBackgroundResource(sport.getSportimg());
+            sportViewHolder.textView.setText(sport.getSportname());
     }
 
     @Override
     public int getItemCount() {
         return msportlist.size();
+    }
+
+    public class SportViewHolder extends RecyclerView.ViewHolder{
+        //public ImageView imageView;
+        public RelativeLayout relativeLayout;
+        public TextView textView;
+        public SportViewHolder(@NonNull View itemView) {
+            super(itemView);
+            //  imageView=itemView.findViewById(R.id.sportImg);
+            relativeLayout=itemView.findViewById(R.id.sportRelative);
+            textView=itemView.findViewById(R.id.sportName);
+
+            String sport=textView.getText().toString();
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    String sport=textView.getText().toString();
+                    Selection.sport=sport;
+                    Intent intent;
+                    intent = new Intent(context,Court.class);
+                    Activity activity=(Activity) context;
+                    context.startActivity(intent);
+
+
+                }
+            });
+        }
     }
 }

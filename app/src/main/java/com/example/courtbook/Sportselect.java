@@ -34,14 +34,15 @@ public class Sportselect extends AppCompatActivity {
 
                 .build(),1 );
         ArrayList<Getsport>getsports=new ArrayList<>();
-        getsports.add(new Getsport(R.drawable.cricket,"Cricket"));
-        getsports.add(new Getsport(R.drawable.badminton,"Badminton"));
-        getsports.add(new Getsport(R.drawable.football,"Football"));
+        getsports.add(new Getsport(1 ,R.drawable.cricket,"Cricket"));
+        getsports.add(new Getsport(2, R.drawable.badminton,"Badminton"));
+        getsports.add(new Getsport(3,R.drawable.football,"Football"));
 
 
         recyclerView=findViewById(R.id.recyclerSport);
         layoutManager=new LinearLayoutManager(this);
-        adapter=new SportSelectAdapter(getsports);
+
+        adapter=new SportSelectAdapter(getsports,this);
 
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(adapter);
