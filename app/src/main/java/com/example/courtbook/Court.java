@@ -19,6 +19,7 @@ public class Court extends AppCompatActivity {
 
         ArrayList<Getcourt>getcourts=new ArrayList<>();
         if(Selection.sport.equals("Cricket")) {
+
             getcourts.add(new Getcourt(1, "Ragiv Gandhi International Stadium", "Uppal, Hyderabad, Telangana 500039", R.drawable.rgstadium));
             getcourts.add(new Getcourt(2, "Eden Gardens", "BBD Bagh, Kolkata, West Bengal 700021", R.drawable.edengardens));
 
@@ -26,6 +27,10 @@ public class Court extends AppCompatActivity {
         else if(Selection.sport.equals("Badminton")) {
             getcourts.add(new Getcourt(1,"A1 SPORTS"," 201/2, 1st Main, 1st Cross Bagalur Cross Near to Brundavan College, Baba Nagar, Yelahanka, Bengaluru, Karnataka 560063",R.drawable.a1sports));
             getcourts.add(new Getcourt(2,"Takerz Badminton Academy","No:39/2, Srirampura Village, Behind Manyata Tech Park, Jakkur, Bengaluru, Karnataka 560064",R.drawable.takerzs));
+        }
+        else if(Selection.sport.equals("Football")){
+            getcourts.add(new Getcourt(1, "Banglore Football Turf", "36/2, Royal Suites Hotel Apartments, Hennur Ring Road Junction, Bengaluru, Karnataka 560043", R.drawable.bft));
+            getcourts.add(new Getcourt(2, "Shantiniketan Football Court", "474, K Main Rd, Tank Ground Shantiniketan Tank Park Muthuraya Swamy Layout, 560076, Vysya Bank Colony, Shantiniketan Layout, Arekere, Bengaluru, Karnataka 560076", R.drawable.sfa));
         }
 
         recyclerView=findViewById(R.id.recyclercourt);
