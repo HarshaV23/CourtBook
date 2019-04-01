@@ -4,16 +4,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Sportselect">
+    tools:context=".Sportselect"
+    android:id="@+id/drawerid"
+    >
+
     <android.support.design.widget.NavigationView
+        android:id="@+id/navid"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        app:itemTextColor="#A9A9A9"
-        app:itemIconTint="#A9A9A9"
+        app:itemTextColor="#000000"
+        app:itemIconTint="#000000"
         android:background="#ffffff"
         app:menu="@menu/drawerfile"
         android:layout_gravity="start"
-        app:headerLayout="@layout/menuheader">
+        app:headerLayout="@layout/menuheader"
+        >
 
 
     </android.support.design.widget.NavigationView>
@@ -29,4 +34,5 @@
             android:id="@+id/recyclerSport"
             />
     </RelativeLayout>
+
 </android.support.v4.widget.DrawerLayout>
