@@ -1,6 +1,8 @@
 package com.example.courtbook;
 
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -13,6 +15,9 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.firebase.ui.auth.AuthUI;
@@ -33,7 +38,10 @@ public class Sportselect extends AppCompatActivity implements NavigationView.OnN
    private DrawerLayout mdrawer;
     private ActionBarDrawerToggle abt;
    private    FirebaseAuth firebaseAuth;
-
+   private TextView textView;
+    private String name;
+    //private ImageView propi;
+    //private String photourl;
 
 
     @Override
@@ -42,6 +50,7 @@ public class Sportselect extends AppCompatActivity implements NavigationView.OnN
         setContentView(R.layout.activity_sportselect);
 
 
+        textView=findViewById(R.id.username);
         NavigationView mnavigationview=(NavigationView) findViewById(R.id.navid);
         //Listening to items clicked
         if(mnavigationview!=null)
@@ -58,11 +67,22 @@ public class Sportselect extends AppCompatActivity implements NavigationView.OnN
         abt.syncState();
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+
+
         //Firebase Auth using email and google providers
         firebaseAuth=FirebaseAuth.getInstance();
         if(firebaseAuth.getCurrentUser()!=null){
             //user already signed in
             Log.d("Auth",firebaseAuth.getCurrentUser().getEmail());
+            Log.d("Auth",firebaseAuth.getCurrentUser().getDisplayName());
+            name=firebaseAuth.getCurrentUser().getDisplayName();
+            //photourl=firebaseAuth.getCurrentUser().getPhotoUrl().toString();
+            Toast.makeText(this,"Welcome! "+name,Toast.LENGTH_SHORT).show();
+            textView=(TextView) mnavigationview.getHeaderView(0).findViewById(R.id.username);
+            textView.setText(name);
+           // propi=(ImageView) mnavigationview.getHeaderView(0).findViewById(R.id.propic);
+
+
         }
         else {
             startActivityForResult(AuthUI.getInstance()
@@ -74,7 +94,9 @@ public class Sportselect extends AppCompatActivity implements NavigationView.OnN
                     )
 
                     .build(), RC_SIGN_IN);
+
         }
+
 
 
         //Getting the items for the cards in the view.
@@ -131,6 +153,7 @@ public class Sportselect extends AppCompatActivity implements NavigationView.OnN
              if(resultCode==RESULT_OK){
                  //user logged in
                 Log.d("Auth",firebaseAuth.getCurrentUser().getEmail());
+
              }
              else{
                  //User not authenticated
