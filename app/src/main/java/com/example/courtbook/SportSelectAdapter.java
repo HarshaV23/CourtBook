@@ -53,7 +53,7 @@ public class SportSelectAdapter extends RecyclerView.Adapter<SportSelectAdapter.
             relativeLayout=itemView.findViewById(R.id.sportRelative);
             textView=itemView.findViewById(R.id.sportName);
 
-            String sport=textView.getText().toString();
+            //String sport=textView.getText().toString();
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
