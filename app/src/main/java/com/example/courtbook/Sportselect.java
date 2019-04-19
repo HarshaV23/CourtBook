@@ -24,6 +24,8 @@ import com.firebase.ui.auth.AuthUI;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -39,9 +41,12 @@ public class Sportselect extends AppCompatActivity implements NavigationView.OnN
     private ActionBarDrawerToggle abt;
    private    FirebaseAuth firebaseAuth;
    private TextView textView;
-    private String name;
+     static String name;
+     static String muid;
+    static String memail;
     //private ImageView propi;
     //private String photourl;
+
 
 
     @Override
@@ -81,8 +86,15 @@ public class Sportselect extends AppCompatActivity implements NavigationView.OnN
             textView=(TextView) mnavigationview.getHeaderView(0).findViewById(R.id.username);
             textView.setText(name);
            // propi=(ImageView) mnavigationview.getHeaderView(0).findViewById(R.id.propic);
+            muid=firebaseAuth.getCurrentUser().getUid();
+            memail=firebaseAuth.getCurrentUser().getEmail();
 
 
+
+
+
+
+           //databaseuser.child(bid).setValue(user);
         }
         else {
             startActivityForResult(AuthUI.getInstance()

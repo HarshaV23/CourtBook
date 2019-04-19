@@ -19,6 +19,9 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 import java.util.ArrayList;
 import java.util.Calendar;
 
@@ -27,6 +30,7 @@ public class CourtAdapter extends RecyclerView.Adapter<CourtAdapter.CourtViewHol
             private ArrayList<Getcourt> mcourtlist;
             private static Context context;
             private static DatePickerDialog.OnDateSetListener mdateset;
+           private static   DatabaseReference databaseuser;
 
     public CourtAdapter(ArrayList<Getcourt> mcourtlist, Context context) {
         this.mcourtlist = mcourtlist;
@@ -87,6 +91,34 @@ public class CourtAdapter extends RecyclerView.Adapter<CourtAdapter.CourtViewHol
             mdateset=new DatePickerDialog.OnDateSetListener() {
                 @Override
                 public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+
+                    String bid;
+                    String username;
+                    String uid;
+                    String email;
+                    String cname;
+                    int myear;
+                    int mmonth;
+                    int mday;
+                    Boolean bstatus;
+
+
+                    myear=year;
+                    mmonth=month+1;
+                    mday=dayOfMonth;
+                    username=Sportselect.name;
+                    uid=Sportselect.muid;
+                    email=Sportselect.memail;
+                    cname=Selection.court;
+                    bstatus=true;
+
+                    databaseuser= FirebaseDatabase.getInstance().getReference("bookings");
+                   bid= databaseuser.push().getKey();
+
+                   Userread user=new Userread(bid,username,uid,email,cname,myear,mmonth,mday,bstatus);
+                   databaseuser.child(bid).setValue(user);
+
+                    Toast.makeText(context,"Court Booked",Toast.LENGTH_SHORT).show();
 
                 }
             };
