@@ -2,6 +2,6 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="navigation_view">
-<item android:id="@+id/booking" android:title="Booking History" android:icon="@drawable/ic_noun_history_1702560"/>
+
     <item android:id="@+id/logout" android:title="Log Out" android:icon="@drawable/ic_noun_logout_2330284" />
 </menu>
